@@ -130,7 +130,7 @@ export function handleStateAdd<T extends ItemInterface>(
   const newList = [...list];
   normalized.forEach((curr) => {
     const newItem = clone && evt && clone(curr.item, evt);
-    newList.splice(curr.newIndex, 0, newItem || curr.item);
+    (newItem || curr.item) && newList.splice(curr.newIndex, 0, newItem || curr.item);
   });
   return newList;
 }
